@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Operator extends Model
 {
-    public function requests()
+    public function orders()
     {
         return $this->hasMany('App\Order');
     }
