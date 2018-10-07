@@ -41,32 +41,31 @@
             <div id="info"></div>
         </div>
     </div>
-</div>
-<script>
-    $(document).ready(function(){
-        $('#offer_name').change(function () {
-            $('#disabled').attr('disabled','disabled');
-            var offer_id = $('#offer_name').val();
-            $.ajax({
-                url:'{{ route('get-offer') }}',
-                type:'GET',
-                data: {
-                    'offer_id':offer_id,
-                    '_token':"{{ csrf_token() }}",
-                },
-                success:function (data) {
-                    $('#info').empty();
-                    $.each(data,function (index,value) {
-                        $('#info').append(
-                            '<div class="row">'+
-                            '<div class="col text-center ">'+value['count']+'</div>'+
-                            '<div class="col text-center">'+value['price']+'</div>'+
-                            '</div>'
-                        );
-                    });
-                }
+    <script>
+        $(document).ready(function(){
+            $('#offer_name').change(function () {
+                $('#disabled').attr('disabled','disabled');
+                var offer_id = $('#offer_name').val();
+                $.ajax({
+                    url:'{{ route('get-offer') }}',
+                    type:'GET',
+                    data: {
+                        'offer_id':offer_id,
+                        '_token':"{{ csrf_token() }}",
+                    },
+                    success:function (data) {
+                        $('#info').empty();
+                        $.each(data,function (index,value) {
+                            $('#info').append(
+                                '<div class="row">'+
+                                '<div class="col text-center ">'+value['count']+'</div>'+
+                                '<div class="col text-center">'+value['price']+'</div>'+
+                                '</div>'
+                            );
+                        });
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 @endsection
