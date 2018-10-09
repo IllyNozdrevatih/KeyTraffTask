@@ -4,24 +4,14 @@
     <table class="table table-bordered">
         <tr>
             <td>имя товара</td>
-            <td>
-                <div class="row">
-                    <div class="col text-center">количество товара</div>
-                    <div class="col text-center">сумма</div>
-                </div>
-            </td>
+            <td>количество товара</td>
+            <td>сумма</td>
         </tr>
         @foreach( $offers as $offer)
             <tr>
                 <td>{{ $offer->name }}</td>
-                 <td>
-                    @foreach($offer->orders as $order)
-                        <div class="row">
-                            <div class="col text-center">{{ $order->count }}</div>
-                            <div class="col text-center">{{ $order->price }}</div>
-                        </div>
-                    @endforeach
-                 </td>
+                <td>{{ $offer->getCount() }}</td>
+                <td>{{ $offer->getPrice() }}</td>
             </tr>
         @endforeach
     </table>
